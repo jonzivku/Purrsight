@@ -1,24 +1,31 @@
 # Django Documentation
 Run command in root directory unless otherwise stated.
-Default host ip:
+#### Default host ip:
 >127.0.0.1:8000
 
-### Root directory
+#### Root directory:
 >Purrsight/
 
 ## Development setup:
 
-### Create local virtual environment
+#### 1. Create local virtual environment
 >$ virtualenv django_venv -p python3
 
-### Activate virtual environment
+#### 2. Activate virtual environment
 >$ source django_venv/bin/activate
 
-### Install python packages
+#### 3. Install python packages
 >$ pip3 install -r requirements.txt
 
-### Run server
->$ python3 manage.py runserver
+#### 4. Set git to ignore \_\_pycache__
+>$ git checkout -- src/purrsight/\_\_pycache__
 
-### Deactivate
+## Usage:
+#### 1. Activate virtual environment
+>$ source django_venv/bin/activate
+
+#### 2. Run server
+>$ python3 ./src/manage.py runserver
+
+#### 3. Deactivate to leave virtual environment
 >$ deactivate
