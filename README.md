@@ -17,9 +17,6 @@ Run command in root directory unless otherwise stated.
 #### 3. Install python packages
 >$ pip3 install -r requirements.txt
 
-#### 4. Set git to ignore \_\_pycache__
->$ git checkout -- src/purrsight/\_\_pycache__
-
 ## Usage:
 #### 1. Activate virtual environment
 >$ source django_venv/bin/activate
