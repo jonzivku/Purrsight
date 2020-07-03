@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from users import views as user_views
+from pages import views as pages_views
+
 urlpatterns = [
+    path('', user_views.login_view, name='splash'),
     path('admin/', admin.site.urls),
+    path('register/', user_views.register_view, name='register'),
+    path('login/', user_views.login_view, name='login'),
+	path('feed/', pages_views.feed_view, name='feed'),
 ]
