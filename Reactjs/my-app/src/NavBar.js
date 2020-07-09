@@ -11,13 +11,16 @@ export const NavBar = () => {
         <Nav className="justify-content-front">
           <Nav.Link href="/Profile">Profile</Nav.Link>
         </Nav>
+        <Nav className="justify-content-front">
+          <Nav.Link href="/DataFetching">DataFetching</Nav.Link>
+        </Nav>
         <Navbar.Collapse className="justify-content-end">
-          <Nav className="justify-content-end">
-            <Nav.Link href="/SignUp">Sign Up</Nav.Link>
-          </Nav>
-          <Nav className="justify-content-end">
-            <Nav.Link href="/SignIN">Sign In</Nav.Link>
-          </Nav>
+        <Nav className="justify-content-end">
+          <Nav.Link href="/SignUp">Sign Up</Nav.Link>
+        </Nav>
+        <Nav className="justify-content-end">
+          <Nav.Link href="/SignIN">Sign In</Nav.Link>
+        </Nav>
         </Navbar.Collapse>
       </Navbar.Collapse>
     </Navbar>
