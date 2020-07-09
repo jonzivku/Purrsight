@@ -24,7 +24,7 @@ Run command in root directory unless otherwise stated.
 >$ deactivate
 
 # Reactjs Documentation
-#### Django host ip:
+#### Reactjs host ip:
 >192.168.50.138:3000
 ## Reactjs Development setup:
 #### 1. install npm in Purrsight/Reactjs/my-app
