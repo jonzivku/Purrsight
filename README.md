@@ -24,6 +24,7 @@ Run command in root directory unless otherwise stated.
 >$ deactivate
 
 # Reactjs Documentation
+req: nodejs latest stable 
 #### Reactjs host ip:
 >192.168.50.138:3000
 ## Reactjs Development setup:
