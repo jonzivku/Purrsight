@@ -1,13 +1,9 @@
 # Django Documentation
 Run command in root directory unless otherwise stated.
-#### Default host ip:
+#### Django host ip:
 >127.0.0.1:8000
 
-#### Root directory:
->Purrsight/
-
-## Development setup:
-
+## Django Development setup:
 #### 1. Create local virtual environment
 >$ virtualenv django_venv -p python3
 
@@ -17,7 +13,7 @@ Run command in root directory unless otherwise stated.
 #### 3. Install python packages
 >$ pip3 install -r requirements.txt
 
-## Usage:
+## Django Usage:
 #### 1. Activate virtual environment
 >$ source django_venv/bin/activate
 
@@ -26,3 +22,16 @@ Run command in root directory unless otherwise stated.
 
 #### 3. Deactivate to leave virtual environment
 >$ deactivate
+
+# Reactjs Documentation
+#### Django host ip:
+>192.168.50.138:3000
+## Reactjs Development setup:
+#### 1. install npm in Purrsight/Reactjs/my-app
+>$ npm install
+#### 2. install npm router and axios
+>$ npm install react-router-dom | npm install axios
+
+## Reactjs Usage:
+#### 1. Run Server
+>$ npm start
