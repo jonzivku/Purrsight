@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # View for Feed page
 def feed_view(request, *args, **kwargs):
-	return render(request, "feed.html", {})
+	return render(request, "pages/feed.html", {})
