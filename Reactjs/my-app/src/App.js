@@ -11,36 +11,38 @@ import {DataFetching} from './DataFetching.js';
 import './App.css';
 
 class App extends Component {
-  render(){
-    return(<>
-      <Jumbotron>
-        <h1 className="header">P U R R S I G H T</h1>
-        <NavBar>
-        </NavBar>
-      </Jumbotron>
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/Home">
-              <Home />
-            </Route>
-            <Route exact path="/Profile">
-              <Profile />
-            </Route>
-            <Route exact path="/SignUp">
-              <SignUp />
-            </Route>
-            <Route exact path="/SignIn">
-              <SignIn />
-            </Route>
-            <Route exact path="/DataFetching">
-              <DataFetching />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </>
-  )}
+	render(){
+		return(
+			<>
+				<Jumbotron>
+					<h1 className="header">P U R R S I G H T</h1>
+					<NavBar>
+					</NavBar>
+				</Jumbotron>
+				<Router>
+					<div>
+						<Switch>
+							<Route exact path="/Home">
+								<Home />
+							</Route>
+							<Route exact path="/Profile">
+								<Profile />
+							</Route>
+							<Route exact path="/SignUp">
+								<SignUp />
+							</Route>
+							<Route exact path="/SignIn">
+								<SignIn />
+							</Route>
+							<Route exact path="/DataFetching">
+								<DataFetching />
+							</Route>
+						</Switch>
+					</div>
+				</Router>
+			</>
+		)
+	}
 }
 
 export default App;

@@ -5,8 +5,8 @@ import {Row, Col, Button, Form} from 'react-bootstrap';
 export function SignUp() {
   return (
     <div>
-      <Row>
-        <Col md={{ span: 4, offset: 4 }} fluid="md">
+      <Row className="justify-content-md-center">
+        <Col md={{ span: 4}} fluid="md">
           <Form>
             <h2>Sign Up</h2>
             <Form.Group as={Row} controlId="formHorizontalEmail">
