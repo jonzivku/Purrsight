@@ -1,46 +1,44 @@
-import React, { Component, useState, useEffect } from 'react';
-import axios from 'axios';
-import {Jumbotron, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import {SignIn} from './SignIn.js';
-import {SignUp} from './SignUp.js';
-import {Profile} from './Profile.js';
-import {Home} from './Home.js';
-import {NavBar} from './NavBar.js';
-import {DataFetching} from './DataFetching.js';
-import './App.css';
+import { connect } from 'react-redux';
+
+import {NavBar} from './containers/NavBar.js';
+import {DataFetching} from './containers/DataFetching.js';
+import * as actions from './store/actions/auth';
+import BaseRouter from './router';
+import NavBar from './containers/NavBar';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+  }
+
   render(){
-    return(<>
-      <Jumbotron>
-        <h1 className="header">P U R R S I G H T</h1>
-        <NavBar>
-        </NavBar>
-      </Jumbotron>
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/Home">
-              <Home />
-            </Route>
-            <Route exact path="/Profile">
-              <Profile />
-            </Route>
-            <Route exact path="/SignUp">
-              <SignUp />
-            </Route>
-            <Route exact path="/SignIn">
-              <SignIn />
-            </Route>
-            <Route exact path="/DataFetching">
-              <DataFetching />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </>
-  )}
+    return(
+      <div className="App">
+        <Router>
+          <NavBar ...this.props>
+            <BaseRouter />
+          </NavBar>        
+        </Router>  
+      </div>
+    );
+  }
 }
 
-export default App;
+// add {...this.props} to a container as such <'container' {...this.props}> to gain access to isAuthenticated as part of props
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
