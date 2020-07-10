@@ -1,12 +1,8 @@
-# Django Documentation
-Run command in root directory unless otherwise stated.
+# Project Documentation
 #### Django host ip:
 >127.0.0.1:8000
 #### React host ip:
 >127.0.0.1:3000
-
-# Reactjs Documentation
-req: nodejs latest stable 
 
 ## Reactjs Development setup:
 #### Navigate to my-app folder which contains package.json
@@ -31,6 +27,8 @@ req: nodejs latest stable
 #### When working with the backend, activate the virtual environment
 #### The virtual env can be deactivated with 'deactivate'
 >$ source env/bin/activate
+
+>$ deactivate
 
 #### 3. Install python packages
 #### if this is your first time pulling or django is missing dependencies run
