@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.0.7",
     "jquery": "^1.9.1",
     "popper.js": "^1.16.0",
     "typescript": "^3.9.6"
