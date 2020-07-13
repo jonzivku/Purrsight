@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
-import axios from 'axios';
-import {Jumbotron, Button} from 'react-bootstrap';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import React, { useState } from 'react';
+// import axios from 'axios';
+import {Jumbotron } from 'react-bootstrap';
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {SignIn} from './SignIn.js';
 import {SignUp} from './SignUp.js';
 import {Profile} from './Profile.js';
@@ -9,25 +9,36 @@ import {Home} from './Home.js';
 import {NavBar} from './NavBar.js';
 import {DataFetching} from './DataFetching.js';
 import './App.css';
+// Building Basic React Auth...
 
-class App extends Component {
-	render(){
-		return(
-			<>
-				<Jumbotron>
-					<h1 className="header">P U R R S I G H T</h1>
-					<NavBar>
-					</NavBar>
-				</Jumbotron>
+// we dont use this, we're using reactbootstrap
+// import { Card, Logo, Form, Input, Button, Error } from "../components/AuthForms";
+import { AuthContext } from "./context/auth"
+import PrivateRoute from "./PrivateRoute.js"
+
+function App(props) {
+	const existingTokens = JSON.parse(localStorage.getItem("tokens"));
+	const [authTokens, setAuthTokens] = useState(existingTokens);
+
+	const setTokens = (data) => {
+		localStorage.setItem("tokens", JSON.stringify(data));
+		setAuthTokens(data);
+	}
+	
+	return(
+		<>
+			<Jumbotron>
+				<h1 className="header">P U R R S I G H T</h1>
+				<NavBar />
+			</Jumbotron>
+			<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>	
 				<Router>
 					<div>
 						<Switch>
 							<Route exact path="/Home">
 								<Home />
 							</Route>
-							<Route exact path="/Profile">
-								<Profile />
-							</Route>
+							<PrivateRoute exact path="/Profile" component={Profile} />
 							<Route exact path="/SignUp">
 								<SignUp />
 							</Route>
@@ -40,9 +51,10 @@ class App extends Component {
 						</Switch>
 					</div>
 				</Router>
-			</>
-		)
-	}
+			</AuthContext.Provider>
+		</>
+	)
+
 }
 
 export default App;

@@ -1,9 +1,9 @@
 //Profile.js
 import React from 'react';
-import {Row, Col, Button, Form, Card, Image} from 'react-bootstrap';
-import catOne from './catOne.jpg'
-import catTwo from './2.jpg'
-import catThree from './3.png'
+import {Row, Col, Button, Card } from 'react-bootstrap';
+import catOne from './img/catOne.jpg'
+import catTwo from './img/2.jpg'
+import catThree from './img/3.png'
 export function Profile(){
 
 	return (

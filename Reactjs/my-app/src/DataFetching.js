@@ -4,9 +4,10 @@ User can request an id with a field to get a json response
 GET is immediately sent after inputing, but the value is only displayed 
 after button press
 */
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Row, Col, Button} from 'react-bootstrap';
+
 export function DataFetching(){
 	const [post, setPost] = useState({})
 	const [id, setId] = useState(1)
@@ -22,18 +23,18 @@ export function DataFetching(){
 			.catch(err => {
 				console.log(err)
 				})
-	}, [idFromButtonClick])
+	}, [id, idFromButtonClick])
 
 	return (
 		<div>
-			<row>
+			<Row>
 				<Col md={{ span: 4, offset: 4 }} fluid="md">
 					<h3>fetch a json from https://jsonplaceholder.typicode.com/posts</h3>
 					<input type ="text" value={id} onChange={e => setId(e.target.value)} />
-					<button type ="button" onClick={handleClick}> Fetch Post</button>
+					<Button type ="button" onClick={handleClick}> Fetch Post</Button>
 					<div>{post.title}</div>
 				</Col>
-			</row>
+			</Row>
 		</div>
 	)
 }
