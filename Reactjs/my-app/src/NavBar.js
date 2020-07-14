@@ -1,6 +1,6 @@
 //NavBar.js
 import React from 'react';
-import {Jumbotron, Navbar, Nav} from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 
 export const NavBar = () => {
   return (

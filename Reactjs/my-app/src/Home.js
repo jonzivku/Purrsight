@@ -1,9 +1,9 @@
 //Home.js
 import React from 'react';
 import {NavBar} from './NavBar.js';
-import {Row, Col, Button, Form, Card, Image} from 'react-bootstrap';
+import {Row, Col, Card} from 'react-bootstrap';
 import catOne from './catOne.jpg'
-import catTwo from './2.jpg'
+//import catTwo from './2.jpg'
 import catThree from './3.png'
 export function Home() {
   return (

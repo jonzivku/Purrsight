@@ -4,10 +4,11 @@ User can request an id with a field to get a json response
 GET is immediately sent after inputing, but the value is only displayed 
 after button press
 */
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Row, Col, Button, Form} from 'react-bootstrap';
+import { Col, Form} from 'react-bootstrap';
 import {NavBar} from './NavBar.js';
+
 export function DataFetching(){
   const [post, setPost] = useState({})
   const [id, setId] = useState(1)

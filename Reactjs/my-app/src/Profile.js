@@ -1,6 +1,6 @@
 //Profile.js
 import React from 'react';
-import {Row, Col, Button, Form, Card, Image} from 'react-bootstrap';
+import {Row, Col, Button, Card} from 'react-bootstrap';
 import catOne from './catOne.jpg'
 import catTwo from './2.jpg'
 import catThree from './3.png'
