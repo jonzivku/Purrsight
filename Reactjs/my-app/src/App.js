@@ -27,11 +27,11 @@ function App(props) {
 	
 	return(
 		<>
+			<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>	
 			<Jumbotron>
 				<h1 className="header">P U R R S I G H T</h1>
-				<NavBar />
+				<NavBar> </NavBar>
 			</Jumbotron>
-			<AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>	
 				<Router>
 					<div>
 						<Switch>

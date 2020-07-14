@@ -1,6 +1,6 @@
 //SignIn.js
 import React, { useState } from 'react';
-import {Row, Col, Button, Form } from 'react-bootstrap';
+import {Row, Col, Button, Form, Container } from 'react-bootstrap';
 import { Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 // import logoImg from "./img/3.png"
@@ -11,13 +11,17 @@ import { AlertDismissible } from "./components/Alerts"
 
 export function SignIn(props){
 
-  const referer = props.location.state.referer || '/';
+  // console.log(props.location.state);
+  const referer = (props.location ? props.location.state.referer : '/');
+  console.log(referer);
 
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthTokens } = useAuth();
+
+
 
   function postSignIn(){
     axios.post("http://localhost:8000/admin/auth/user/", {
@@ -41,7 +45,7 @@ export function SignIn(props){
 
 
 	return (
-		<div>
+		<Container>
 			<Row className="justify-content-md-center">
 				<Col md={{ span: 4 }} fluid="md">
 					<Form>
@@ -51,13 +55,13 @@ export function SignIn(props){
 								Email
 							</Form.Label>
 							<Col sm={10}>
-								<Form.Control 
-									type="email" 
+								<Form.Control
+									type="email"
 									placeholder="email"
 									value={email}
 									onChange={e => {
 										setEmail(e.target.value);
-									}} 
+									}}
 								/>
 							</Col>
 						</Form.Group>
@@ -66,28 +70,28 @@ export function SignIn(props){
 								Password
 							</Form.Label>
 							<Col sm={10}>
-								<Form.Control 
+								<Form.Control
 									type="password"
 									value={password}
                   placeholder="Password"
 									onChange={e => {
 										setPassword(e.target.value);
-									}} 
+									}}
 								/>
 							</Col>
 						</Form.Group>
 					</Form>
-					<Button 
-            variant="primary" 
+					<Button
+            variant="primary"
             type="submit"
             onClick={postSignIn}
           >
 						Sign In
 					</Button>
           <Link to="/SignUp">Don't have an account?</Link>
-            { isError && <AlertDismissible /> }           }
+            { isError && <AlertDismissible /> }
 				</Col>
 			</Row>
-		</div>
+		</Container>
 	)
 }

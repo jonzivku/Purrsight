@@ -8,11 +8,13 @@ export const NavBar = (props) => {
 	const { setAuthTokens } = useAuth();
 	
 	function logOut() {
+		localStorage.clear();
 		setAuthTokens();
+
 	}
 
 	return (
-		<Navbar bg="light" expand="lg" fluid>
+		<Navbar bg="light" expand="lg" fluid="true">
 			<Navbar.Brand href="/Home">Home</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">

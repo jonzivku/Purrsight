@@ -1,7 +1,7 @@
 //SignOut.js
 import React, { useState } from 'react';
 import {Link, Redirect} from 'react-router-dom';
-import {Row, Col, Button, Form} from 'react-bootstrap';
+import {Row, Col, Button, Form, Container} from 'react-bootstrap';
 import axios from 'axios';
 import { useAuth } from "./context/auth";
 import { AlertDismissible } from './components/Alerts'
@@ -33,15 +33,13 @@ export function SignUp() {
       return;
     }
 
-
-    console.log(password + " " + password2);
     if (password !== password2){
       setIsError(true);
       setErrorMsg("Your passwords don't match. Try again");
       return;
     }
 
-    axios.post("http://localhost:8000/admin/auth/user/", {
+    axios.post("http://localhost:8000/admin/auth/user/add/", {
       email,
       password
     }).then(result => {
@@ -65,9 +63,9 @@ export function SignUp() {
 
 
   return (
-    <div>
+    <Container>
       <Row className="justify-content-md-center">
-        <Col md={{ span: 4}} fluid="md">
+        <Col md={{ span: 4}} fluid="sm">
           <Form>
             <h2>Sign Up</h2>
             <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -100,7 +98,7 @@ export function SignUp() {
                   />
               </Col>
             </Form.Group>
-            <Form.Group as={Row} controlId="formHorizontalPassword">
+            <Form.Group as={Row} controlId="formHorizontalPassword2">
               <Form.Label column sm={2}>
                 Confirm Password
               </Form.Label>
@@ -123,6 +121,6 @@ export function SignUp() {
           { isError && <AlertDismissible message={errorMsg} />}
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 }
