@@ -4,6 +4,8 @@ import {Row, Col, Button, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
 import {Navbar} from 'react-bootstrap';
+import {Route, Redirect, withRouter} from "react-router-dom";
+
 
 class Signin extends React.Component{
  
@@ -16,6 +18,7 @@ class Signin extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.redirectLoggedIn = this.redirectLoggedIn.bind(this);
   }  
 
   handleSubmit = (e) => {
@@ -34,9 +37,26 @@ class Signin extends React.Component{
     this.setState({password: event.target.value});
   }
 
+  redirectLoggedIn = () => {
+    if(this.props.isAuthenticated){
+    return <Redirect to='/home' />
+    }
+  }
+
   render() {
+
+    let errorMessage = null;
+    if (this.props.error) {
+        errorMessage = (
+            <p>Invalid Login Credentials</p>
+        );
+    } else {
+      errorMessage = ''
+    }
+
     return (
-      <>
+      <> 
+        {this.redirectLoggedIn()}      
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -69,7 +89,7 @@ class Signin extends React.Component{
               <Button variant="primary" type="submit" href = "/SignUp">
                 Sign Up
               </Button>
-              <div>{this.state.email}</div>{this.state.password}
+              <div>{errorMessage}</div>
             </Col>
           </Row>
         </div>
@@ -80,7 +100,9 @@ class Signin extends React.Component{
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
-  error: state.error
+  error: state.error,
+  isAuthenticated: state.token !== null
+
 });
 
 const mapDispatchToProps = dispatch => {
@@ -89,4 +111,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signin));

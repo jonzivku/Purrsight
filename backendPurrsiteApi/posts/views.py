@@ -4,7 +4,7 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
  
-from posts.models import Post
+from posts.models import Posts
 from posts.serializers import PostSerializer
 from rest_framework.decorators import api_view
 

@@ -11,7 +11,6 @@ export function Home() {
       <NavBar>
       </NavBar>
       <div>
-
         <Row className="justify-content-md-center">
           <Col md={{span: 4}} >
             <Card >

@@ -4,7 +4,6 @@ import {Row, Col, Button, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
 
-
 class Signup extends React.Component {
 
   constructor(props) {
@@ -14,7 +13,7 @@ class Signup extends React.Component {
       password1: '',
       password2: '',
     };
-
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -24,12 +23,11 @@ class Signup extends React.Component {
   handleSubmit = (e) => {
 
     e.preventDefault();
-
         this.props.onAuth(
             this.state.email,
             this.state.password1,
             this.state.password2
-        );    
+        );
   }
 
   handleEmail = (event) => {
