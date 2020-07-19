@@ -24,9 +24,9 @@ class Profile extends Component{
       })
   }
 
-	render () {    
+	render () {
     const {posts} = this.state
-    return (    
+    return (
       <>
         <NavBar>
         </NavBar>
