@@ -1,20 +1,25 @@
 import React from 'react';
-import { Container, Card, Button, Row } from 'react-bootstrap';
+import { Container, Card, Button, Row, Image, Col } from 'react-bootstrap';
 
 export default function PictureCard(props) {
 
   const {name, profilePicture, picture, description} = props.post;
 
-
   return (
-    <Container fluid>
+    <Card fluid>
       <Row>
-
+        <Col>
+          <Image src={profilePicture} thumbnail />
+        </Col>
+        <Col>
+          {name}
+        </Col>
       </Row>
       <Row>
-
+        <Image src={picture} thumbnail />
+        {description}
       </Row>
-    </Container>
+    </Card>
   );
 
 }
