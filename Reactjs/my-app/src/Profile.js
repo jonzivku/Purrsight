@@ -1,9 +1,11 @@
-//Profile.js
+//Profile.js 
+//userID={posts.userID} pageID={posts.pageID} 
 import React, {Component, useState, useEffect} from 'react';
 import axios from 'axios';
 import {Row, Col, Button, Card} from 'react-bootstrap';
 import {ProfileCard} from './ProfileCard.js';
 import {NavBar} from './NavBar.js';
+import {IsUser} from './IsUser.js';
 
 class Profile extends Component{
   constructor(props) {
@@ -24,17 +26,16 @@ class Profile extends Component{
       })
   }
 
-	render () {    
-    const {posts} = this.state
-    return (    
+  render() {
+    const { posts } = this.state
+    return (
       <>
         <NavBar>
         </NavBar>
         <div>
           <Row className="justify-content-md-center">
-            <Col md={{span: 2}}>
-              <ProfileCard name={posts.name} bio={posts.bio}>
-              </ProfileCard>
+            <Col md={{ span: 2 }}>
+              <IsUser name={posts.title} bio={posts.body}> </IsUser>
             </Col>
           </Row>
         </div>

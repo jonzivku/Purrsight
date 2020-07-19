@@ -3,7 +3,7 @@ import SignIn from './SignIn.js';
 import SignUp from './SignUp.js';
 import Profile from './Profile.js';
 import UpdateProfile from './UpdateProfile.js';
-import {Home} from './Home.js';
+import Home from './Home.js';
 import {DataFetching} from './DataFetching.js';
 
 const Routes = [
