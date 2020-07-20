@@ -14,8 +14,6 @@ class UpdateProfile extends Component {
     };
   }
 
-  id = localStorage.getItem('id');
-
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value })
     // eslint-disable-next-line

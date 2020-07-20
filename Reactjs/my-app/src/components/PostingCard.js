@@ -10,22 +10,18 @@ export default class PostingCard extends React.Component {
     this.state = {
       token: localStorage.getItem('token'),
       picture: null,
-      description: null
+      description: ''
     }
     console.log(this.state.token);
   }
 
-  fileSelectedHandler = event => {
-    this.setState({
-      picture: event.target.files[0]
-    })
+  fileSelectedHandler = e => {
+    this.setState({[e.target.name]: e.target.files[0] })
   }
 
   descriptionChangeHandler = e => {
-    this.setState({
-      description: e
-    })
-    console.log(this.state.description);
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.value);
   }
 
     // onUploadProgress: progressEvent => {
@@ -44,6 +40,7 @@ export default class PostingCard extends React.Component {
       this.state.picture.name)
     fd.append('bio',
       this.state.description)
+
     const config = { headers: {
       'content-type': 'multipart/form-data',
       Authorization: this.state.token
@@ -92,17 +89,22 @@ export default class PostingCard extends React.Component {
     //   </Card>
 
     // );
+    let { token, picture, description } = this.state;
+
+
+
     return (
+
       <>
         <Row className="justify-content-md-center">
           <Col md={{ span: 4 }}>
             <Form onSubmit={this.submitHandler}>
               <Form.Group >
-                <Form.File value={this.state.picture} onChange={this.fileSelectedHandler} name="picture" label="Upload your picture here!" custom />
+                <Form.File value={picture} onChange={this.fileSelectedHandler} name="picture" label="Upload your picture here!" custom />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Update Bio</Form.Label>
-                <Form.Control type="text" name="description" value={this.state.description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
+                <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
               </Form.Group>
               <Form.Label>Picture</Form.Label>
 
@@ -114,6 +116,6 @@ export default class PostingCard extends React.Component {
         </Row>
       </>
     )
-  };
+  }
 
 }
