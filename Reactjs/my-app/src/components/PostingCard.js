@@ -10,7 +10,7 @@ export default class PostingCard extends React.Component {
     this.state = {
       token: localStorage.getItem('token'),
       picture: null,
-      description: null
+      description: "description"
     }
     console.log(this.state.token);
   }
@@ -25,22 +25,24 @@ export default class PostingCard extends React.Component {
     this.setState({
       description: e
     })
+    console.log(this.state.description);
   }
 
   fileUploadHandler = () => {
     // need to check for null before we continue
     const fd = new FormData();
 
-    fd.append('token',
+    // TODO: testjunk, fix
+    fd.append('name',
       this.state.token)
-    fd.append('picture',
+    fd.append('profilePicture',
       this.state.picture,
       this.state.picture.name)
-    fd.append('description',
+    fd.append('bio',
       this.state.description)
 
 
-    axios.post('http://localhost:8000/profile/posts/', fd, {
+    axios.post('http://localhost:8000/profile/', fd, {
       onUploadProgress: progressEvent => {
         console.log(progressEvent.loaded / progressEvent.total)
       }
@@ -73,11 +75,13 @@ export default class PostingCard extends React.Component {
             />
 
           <Button
+            type="submit"
             variant="primary"
             onClick={this.fileUploadHandler}
             >
             Upload
           </Button>
+
         </Card.Body>
       </Card>
 
