@@ -1,13 +1,13 @@
 //Profile.js
 //userID={posts.userID} pageID={posts.pageID}
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
 // import {ProfileCard} from './ProfileCard.js';
-import {NavBar} from './NavBar.js';
+import NavBar from './NavBar';
 import {IsUser} from './IsUser.js';
 
-class Profile extends Component{
+class Profile extends React.Component{
   constructor(props) {
     super(props);
     this.state = {

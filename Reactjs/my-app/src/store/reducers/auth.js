@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject} from '../utility';
 
 const intitialState = {
-    token: null,
+    token: localStorage.getItem('token'),
     errror: null,
     loading: false
 }

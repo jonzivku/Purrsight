@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
 
 
-class Signup extends React.Component {
+class Register extends React.Component {
 
   constructor(props) {
     super(props);
@@ -99,4 +99,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

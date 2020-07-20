@@ -1,12 +1,12 @@
 //Home.js
 import React, {Component} from 'react';
-import {NavBar} from './NavBar.js';
+import NavBar from './NavBar';
 import { Row, Col } from 'react-bootstrap';
 // import axios from 'axios';
 // import { StickyContainer, Sticky } from 'react-sticky';
 // import catOne from './catOne.jpg'
-import catTwo from './2.jpg'
-import catThree from './3.png'
+import catTwo from './static/2.jpg'
+import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
 import {ProfileCard} from './ProfileCard.js'
@@ -15,22 +15,19 @@ class Home extends Component{
   constructor(props) {
     super(props);
     this.state = {
-                testPost: {name:"foo",
-                profilePicture: catTwo,
-                picture: catThree,
-                description:"Hey look a dang gcat"
-                }
-              };
+      testPost: {name:"foo",
+      profilePicture: catTwo,
+      picture: catThree,
+      description:"Hey look a dang gcat"
+      }
+    };
   }
-
-
   render(){
     return (
       <>
         <NavBar>
         </NavBar>
         <div>
-
           <Row className="justify-content-md-center">
             <Col md={{span:4}}>
               <ProfileCard />

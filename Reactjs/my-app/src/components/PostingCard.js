@@ -33,15 +33,17 @@ export default class PostingCard extends React.Component {
     const fd = new FormData();
 
     // TODO: testjunk, fix
-    fd.append('name',
-      this.state.token)
-    fd.append('profilePicture',
-      this.state.picture,
-      this.state.picture.name)
+    fd.append('profilepicture',
+      this.state.picture)
     fd.append('bio',
-      this.state.description)
-
-
+      'this.state.description')
+    fd.append('name',
+      'this.state.description')
+   
+    axios.defaults.headers = {
+      'content-type': 'multipart/form-data', 
+      Authorization: this.state.token
+    }
     axios.post('http://localhost:8000/profile/', fd, {
       onUploadProgress: progressEvent => {
         console.log(progressEvent.loaded / progressEvent.total)
