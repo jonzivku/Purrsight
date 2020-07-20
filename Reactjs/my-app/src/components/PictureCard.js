@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Button, Row, Image, Col } from 'react-bootstrap';
+import { Card, Row, Image, Col } from 'react-bootstrap';
 
 export default function PictureCard(props) {
 

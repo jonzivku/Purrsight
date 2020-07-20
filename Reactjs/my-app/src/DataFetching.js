@@ -1,7 +1,7 @@
 //DataFetching.js
 /* This file uses reactjs hook to send a GET request to an base url
 User can request an id with a field to get a json response
-GET is immediately sent after inputing, but the value is only displayed 
+GET is immediately sent after inputing, but the value is only displayed
 after button press
 */
 import React, { useState, useEffect } from 'react';
@@ -24,7 +24,7 @@ export function DataFetching(){
       .catch(err => {
         console.log(err)
         })
-  }, [idFromButtonClick])
+  }, [idFromButtonClick, id])
 
   return (
       <>

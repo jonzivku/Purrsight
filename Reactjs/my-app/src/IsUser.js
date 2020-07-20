@@ -10,7 +10,7 @@ export function IsUser(props) {
   //const picture = props.picture;
   console.log(props.pageID);
   console.log(props.userID);
-  if (props.userID == props.pageID && props.userID !== undefined && props.pageID !== undefined) {
+  if (props.userID === props.pageID && props.userID !== undefined && props.pageID !== undefined) {
     return <ProfileCard name={props.name} bio={props.bio}> </ProfileCard>;
   }
   return <GuestCard name={props.name} bio={props.bio}> </GuestCard>;
