@@ -18,6 +18,7 @@ class UpdateProfile extends Component {
 
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value })
+    // eslint-disable-next-line
     const file = e.target.files[0] //for photo upload
   }
 
@@ -55,7 +56,7 @@ class UpdateProfile extends Component {
               </Form.Group>
               <Form.Label>Picture</Form.Label>
               <Form.File value={file} onChange={this.changeHandler} name="file" label="Upload your picture here!" custom />
-              <Button type="submit" variant="primary" type="submit">
+              <Button type="submit" variant="primary" >
                 Submit
               </Button>
             </Form>

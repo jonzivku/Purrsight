@@ -1,9 +1,9 @@
 //Profile.js
 //userID={posts.userID} pageID={posts.pageID}
-import React, {Component, useState, useEffect} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Row, Col, Button, Card} from 'react-bootstrap';
-import {ProfileCard} from './ProfileCard.js';
+import { Row, Col } from 'react-bootstrap';
+// import {ProfileCard} from './ProfileCard.js';
 import {NavBar} from './NavBar.js';
 import {IsUser} from './IsUser.js';
 
