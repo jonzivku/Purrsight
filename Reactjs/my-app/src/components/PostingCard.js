@@ -1,40 +1,40 @@
 import React from 'react';
-import { Card, Button} from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
+import axios from 'axios';
 // import ImageUploader from 'react-images-upload';
 
-export default class PostingCard extends React.Component {
 // Post localhost:8000/profile/posts/ { token, picture, description }
+export default class PostingCard extends React.Component {
 
-  // state = {
-  //   uploading: false,
-  //   images: []
-  // }
+  state = {
+    token: null,
+    picture: null,
+    description: null
+  }
 
   fileSelectedHandler = event => {
-    console.log(event);
+    this.setState({
+      picture: event.target.files[0]
+    })
   }
-    // const files = Array.from(e.target.files)
-    // this.setState({ uploading: true })
 
-    // const formData = new FormData()
+  fileUploadHandler = () => {
+    const fd = new FormData();
+    fd.append('picture',
+      this.state.picture,
+      this.state.picture.name)
 
-    // // files.forEach((file, i) => {
-    // //   formData.append(i, file)
-    // // })
+    axios.post('http://localhost:8000/profile/posts/', fd, {
+      onUploadProgress: progressEvent => {
+        console.log(progressEvent.loaded / progressEvent.total)
+      }
+    })
+      .then(res => {
+        console.log(res);
+    })
+  }
 
-    // fetch(`http://localhost:8000/profile/posts/`, {
-    //   method: 'POST',
-    //   body: formData
-    // })
-    // .then(res => res.json())
-    // .then(images => {
-    //   this.setState({
-    //     uploading: false,
-    //     images
-    //   })
-    // })
-
-
+  //
   // removeImage = id => {
   //   this.setState({
   //     images: this.state.images.filter(image => image.public_id !== id)
@@ -51,12 +51,10 @@ export default class PostingCard extends React.Component {
           <input type="file" onChange={this.fileSelectedHandler} />
         </Card.Header>
         <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
-
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional content.
-          </Card.Text>
-          <Button variant="primary">Upload</Button>
+          <Form.Control as="textarea" rows="3" />
+          <Button variant="primary" onClick={this.fileUploadHandler}>
+            Upload
+          </Button>
         </Card.Body>
       </Card>
 

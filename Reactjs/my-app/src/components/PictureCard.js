@@ -6,7 +6,7 @@ export default function PictureCard(props) {
   const {name, profilePicture, picture, description} = props.post;
 
   return (
-    <Card fluid>
+    <Card >
       <Row>
         <Col>
           <Image src={profilePicture} thumbnail />
