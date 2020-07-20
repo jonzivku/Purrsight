@@ -9,14 +9,16 @@ export default class PostingCard extends React.Component {
     super(props);
     this.state = {
       token: localStorage.getItem('token'),
-      picture: null,
-      description: ''
+      picture: '',
+      description: '',
+      // filename: 'default'
     }
     console.log(this.state.token);
   }
 
   fileSelectedHandler = e => {
     this.setState({[e.target.name]: e.target.files[0] })
+    // this.setState({filename: e.target.name})
   }
 
   descriptionChangeHandler = e => {
@@ -100,7 +102,7 @@ export default class PostingCard extends React.Component {
           <Col md={{ span: 4 }}>
             <Form onSubmit={this.submitHandler}>
               <Form.Group >
-                <Form.File value={picture} onChange={this.fileSelectedHandler} name="picture" label="Upload your picture here!" custom />
+                <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Update Bio</Form.Label>
