@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const NavBar = (props) => {
   return (
-    <nav class ="fixed-top">
+    //<nav class ="fixed-top">
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,7 +22,7 @@ const NavBar = (props) => {
           </Navbar.Collapse>
         </Navbar.Collapse>
       </Navbar>
-    </nav>
+    //</nav>
   );
 };
 

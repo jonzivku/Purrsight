@@ -3,9 +3,8 @@ import React from 'react';
 import {Row, Col, Button, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
-import {Navbar} from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
-
 
 class Login extends React.Component{
  
@@ -27,7 +26,7 @@ class Login extends React.Component{
       if(this.props.isAuthenticated&&this.state.email){
         this.props.history.push('/Home');
       }
-    };
+  };
 
   handleEmail = (event) => {
     this.setState({email: event.target.value});

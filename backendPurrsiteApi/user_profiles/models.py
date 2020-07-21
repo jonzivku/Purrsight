@@ -11,17 +11,20 @@ from django.dispatch import receiver
 #     user_id = instance.id
 #     return 'profile_picture/{0}'.format(user_id)
 
-class UserProfiles(models.Model):
-    #authUser = models.OneToOneField(User, on_delete=models.CASCADE)
+class UserProfile(models.Model):
+    authUser = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length = 2000, blank=True)
     profilepicture = models.ImageField(upload_to='profile_picture/', blank=True)
     name = models.CharField(max_length = 40, blank=True)
+    def __str__(self):
+        return '{} {} {} {}'.format(self.name, self.bio, self.authUser, self.profilepicture.name)
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         UserProfiles.objects.create(authUser=instance)
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.userprofiles.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(authUser=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()

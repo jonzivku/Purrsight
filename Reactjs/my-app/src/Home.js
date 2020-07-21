@@ -15,7 +15,8 @@ class Home extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      testPost: {name:"foo",
+      testPost: {
+      name:"foo",
       profilePicture: catTwo,
       picture: catThree,
       description:"Hey look a dang gcat"

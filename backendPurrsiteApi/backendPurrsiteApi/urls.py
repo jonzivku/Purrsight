@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf.urls import url
 from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,5 @@ urlpatterns = [
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('posts/', include('posts.urls')),
-    path('profile/', include('profiles.urls')),
-]
+    path('profile/', include('user_profiles.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

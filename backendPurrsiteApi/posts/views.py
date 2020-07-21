@@ -17,7 +17,6 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
-
 class PostListView(ListAPIView):
     queryset = Posts.objects.all()
     serializer_class = PostSerializer
@@ -30,6 +29,23 @@ class PostDetailView(RetrieveAPIView):
     permission_classes = (permissions.AllowAny, )
 
 
+def create_post(request):
+    print('entering create_post')
+    post = Posts.objects.get(pk=pk)
+    request_instance = get_object(self)
+    print(request_instance)
+    print(user_instance)
+    request_instance.author = request.user
+    print(request_instance)
+
+    request_instance.save()
+    user_instance = User.objects.get(id=request.user.id)
+    print('user model is:')
+    print(user_instance)
+    print('author model is:')
+    print(user_instance)
+    return
+
 class PostCreateView(generics.CreateAPIView):
     queryset = Posts.objects.all()
     serializer_class = PostSerializer
@@ -37,9 +53,14 @@ class PostCreateView(generics.CreateAPIView):
     permission_classes = (permissions.IsAuthenticated, )
     model = Posts    
     def create_post(self, request, format = None, *args, **kwargs):
+        print('entering create_post')
         post = Posts.objects.get(pk=pk)
         request_instance = get_object(self)
+        print(request_instance)
+        print(user_instance)
         request_instance.author = request.user
+        print(request_instance)
+
         request_instance.save()
         user_instance = User.objects.get(id=request.user.id)
         print('user model is:')
@@ -54,7 +75,6 @@ class PostUpdateView(UpdateAPIView):
     queryset = Posts.objects.all()
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticated, )
-
 
 class PostDeleteView(DestroyAPIView):
     queryset = Posts.objects.all()

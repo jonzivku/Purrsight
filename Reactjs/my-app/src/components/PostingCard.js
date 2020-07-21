@@ -36,9 +36,9 @@ export default class PostingCard extends React.Component {
     fd.append('profilepicture',
       this.state.picture)
     fd.append('bio',
-      'this.state.description')
+      'hello there')
     fd.append('name',
-      'this.state.description')
+      'this.asdf.description')
    
     axios.defaults.headers = {
       'content-type': 'multipart/form-data', 
@@ -53,7 +53,6 @@ export default class PostingCard extends React.Component {
         console.log(res);
     })
   }
-
   //
   // removeImage = id => {
   //   this.setState({
@@ -83,7 +82,6 @@ export default class PostingCard extends React.Component {
             >
             Upload
           </Button>
-
         </Card.Body>
       </Card>
 
