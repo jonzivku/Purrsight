@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import Login from './Login';
 import PrivateRoute from './components/PrivateRoute'
 import Register from './Register';
@@ -18,13 +18,13 @@ class App extends Component {
   render(){
     return(
       <Router{...this.props}>
-        <switch>
+        <Switch>
           <Route exact path = "/" component = {Login} />{" "}
           <Route exact path = "/SignUp/" component = {Register} />{" "}
           <Route exact path = "/Profile/" component = {Profile} />{" "}
           <Route exact path = "/UpdateProfile/" component = {UpdateProfile} />{" "}
-          <Route exact path = "/Home/" component = {Home} />{" "}      
-        </switch>  
+          <Route exact path = "/Home/" component = {Home} />{" "}
+        </Switch>
       </Router>
     )
   }

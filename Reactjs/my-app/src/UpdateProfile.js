@@ -12,7 +12,7 @@ class UpdateProfile extends Component{
       bio: ''
     };
   }
-  
+
   id = localStorage.getItem( 'id' );
 
   changeHandler = e => {
@@ -22,7 +22,7 @@ class UpdateProfile extends Component{
   submitHandler = e => {
     e.preventDefault()
     console.log(this.state)
-    axios.post('http://localhost:8000/profile/{$id}', 
+    axios.post('http://localhost:8000/profile/{$id}',
         this.state
       )
       .then(response => {
@@ -51,7 +51,7 @@ class UpdateProfile extends Component{
                 <Form.Label>Update Bio</Form.Label>
                 <Form.Control type="text" name="bio" value={bio} onChange={this.changeHandler} as="textarea" rows="3" />
               </Form.Group>
-              <Button type="submit" variant="primary" type="submit">
+              <Button type="submit" variant="outline-primary">
                 Submit
               </Button>
             </Form>

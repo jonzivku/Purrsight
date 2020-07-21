@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Button, Form } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 // import ImageUploader from 'react-images-upload';
 
 // Post localhost:8000/profile/posts/ { token, picture, description }
+
 export default class PostingCard extends React.Component {
   constructor(props) {
     super(props);
@@ -11,14 +12,16 @@ export default class PostingCard extends React.Component {
       token: localStorage.getItem('token'),
       picture: '',
       description: '',
-      // filename: 'default'
+      noPhoto: true
     }
-    console.log(this.state.token);
   }
 
   fileSelectedHandler = e => {
-    this.setState({[e.target.name]: e.target.files[0] })
-    // this.setState({filename: e.target.name})
+    this.setState({
+      [e.target.name]: e.target.files[0],
+      noPhoto: false
+    })
+    console.log(e.target.name)
   }
 
   descriptionChangeHandler = e => {
@@ -26,7 +29,7 @@ export default class PostingCard extends React.Component {
     console.log(e.target.value);
   }
 
-  fileUploadHandler = () => {
+  submitHandler = () => {
     // need to check for null before we continue
     const fd = new FormData();
 
@@ -39,12 +42,11 @@ export default class PostingCard extends React.Component {
     const config = { headers: {
       'content-type': 'multipart/form-data',
       Authorization: this.state.token
-    }
-    axios.post('http://localhost:8000/profile/', fd, {
-      onUploadProgress: progressEvent => {
-        console.log(progressEvent.loaded / progressEvent.total)
-      }
-    })
+    }}
+
+
+
+    axios.post('http://localhost:8000/profile/', fd, config)
       .then(res => {
         console.log(res);
     })
@@ -57,43 +59,20 @@ export default class PostingCard extends React.Component {
   // }
 
   render() {
-    // const { uploading, images } = this.state
-
-    return(
-      <Card>
-        <Card.Header>
-          <input type="file" onChange={this.fileSelectedHandler} />
-        </Card.Header>
-        <Card.Body>
-          <Form.Control
-            as="textarea"
-            rows="3"
-            onChange={this.descriptionHandler}
-            />
-
-    // );
-    let { token, picture, description } = this.state;
-
-
-
+    let { description } = this.state;
     return (
-
       <>
         <Row className="justify-content-md-center">
           <Col md={{ span: 4 }}>
             <Form onSubmit={this.submitHandler}>
               <Form.Group >
                 <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Update Bio</Form.Label>
                 <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
-              </Form.Group>
-              <Form.Label>Picture</Form.Label>
 
-              <Button type="submit" variant="primary" >
-                Submit
-              </Button>
+                <Button type="submit" variant="primary" disabled={this.state.noPhoto} style={{float: "right"}}>
+                  Post
+                </Button>
+              </Form.Group>
             </Form>
           </Col>
         </Row>
