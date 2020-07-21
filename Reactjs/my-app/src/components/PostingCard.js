@@ -9,23 +9,21 @@ export default class PostingCard extends React.Component {
     super(props);
     this.state = {
       token: localStorage.getItem('token'),
-      picture: null,
-      description: "description"
+      picture: '',
+      description: '',
+      // filename: 'default'
     }
     console.log(this.state.token);
   }
 
-  fileSelectedHandler = event => {
-    this.setState({
-      picture: event.target.files[0]
-    })
+  fileSelectedHandler = e => {
+    this.setState({[e.target.name]: e.target.files[0] })
+    // this.setState({filename: e.target.name})
   }
 
-  descriptionHandler = e => {
-    this.setState({
-      description: e
-    })
-    console.log(this.state.description);
+  descriptionChangeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.value);
   }
 
   fileUploadHandler = () => {
@@ -36,12 +34,10 @@ export default class PostingCard extends React.Component {
     fd.append('profilepicture',
       this.state.picture)
     fd.append('bio',
-      'hello there')
-    fd.append('name',
-      'this.asdf.description')
-   
-    axios.defaults.headers = {
-      'content-type': 'multipart/form-data', 
+      this.state.description)
+
+    const config = { headers: {
+      'content-type': 'multipart/form-data',
       Authorization: this.state.token
     }
     axios.post('http://localhost:8000/profile/', fd, {
@@ -75,17 +71,34 @@ export default class PostingCard extends React.Component {
             onChange={this.descriptionHandler}
             />
 
-          <Button
-            type="submit"
-            variant="primary"
-            onClick={this.fileUploadHandler}
-            >
-            Upload
-          </Button>
-        </Card.Body>
-      </Card>
+    // );
+    let { token, picture, description } = this.state;
 
-    );
-  };
+
+
+    return (
+
+      <>
+        <Row className="justify-content-md-center">
+          <Col md={{ span: 4 }}>
+            <Form onSubmit={this.submitHandler}>
+              <Form.Group >
+                <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Update Bio</Form.Label>
+                <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
+              </Form.Group>
+              <Form.Label>Picture</Form.Label>
+
+              <Button type="submit" variant="primary" >
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </>
+    )
+  }
 
 }
