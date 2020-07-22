@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
 import { Row, Col } from 'react-bootstrap';
-// import axios from 'axios';
-// import { StickyContainer, Sticky } from 'react-sticky';
-// import catOne from './catOne.jpg'
+import catOne from './static/catOne.jpg'
 import catTwo from './static/2.jpg'
 import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
-import {ProfileCard} from './ProfileCard.js'
+import {IsUser} from './IsUser.js'
+import Profile from './Profile.js'
+import {CardColumns } from 'react-bootstrap';
 
 class Home extends Component{
   constructor(props) {
@@ -28,14 +28,15 @@ class Home extends Component{
       <>
         <NavBar>
         </NavBar>
+        <br />
         <div>
           <Row className="justify-content-md-center">
-            <Col md={{span:4}}>
-              <ProfileCard />
-            </Col>
-            <Col md={{span: 4}} >
-              <PostingCard />
-              <PictureCard post={this.state.testPost} />
+            <Col md={{span: 8}}>
+              <CardColumns>
+                <IsUser pfp={catOne} name= "Shane" bio= "I LOVE cats"> </IsUser>
+                <PostingCard />
+                <PictureCard post={this.state.testPost} />
+              </CardColumns>
             </Col>
           </Row>
         </div>
@@ -43,6 +44,7 @@ class Home extends Component{
     );
   }
 }
+
 
 export default Home;
   // constructor(props) {

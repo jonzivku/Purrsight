@@ -1,11 +1,12 @@
+//GuestCard.js
 import React from 'react';
 import {Card} from 'react-bootstrap';
 
 export function GuestCard(props) {
   return (
     <>
-      <Card style={{ width: '18rem' }} className="text-center">
-        <Card.Img variant="left" src={props.pfp} />
+      <Card className="text-center">
+        <Card.Img src={props.pfp} fluid/>
         <Card.Body>
           <Card.Title>{props.name}</Card.Title>
           <Card.Text>
