@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Row, Col, Button, Form} from 'react-bootstrap';
-import {NavBar} from './NavBar.js';
+import NavBar from './NavBar.js';
 
 class UpdateProfile extends Component{
   constructor(props) {
@@ -40,6 +40,7 @@ class UpdateProfile extends Component{
       <>
         <NavBar>
         </NavBar>
+        <br/>
         <Row className="justify-content-md-center">
           <Col md={{span: 4}}>
             <Form onSubmit={this.submitHandler}>

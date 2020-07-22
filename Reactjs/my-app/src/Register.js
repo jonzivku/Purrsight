@@ -2,6 +2,7 @@
 import React from 'react';
 import {Row, Col, Button, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Navbar } from 'react-bootstrap';
 import * as actions from './store/actions/auth';
 import axios from 'axios';
 
@@ -58,6 +59,12 @@ class Register extends React.Component {
 
   render() {
     return (
+      <>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          </Navbar>
+          <br />
           <div>
             <Row className="justify-content-md-center">
               <Col md={{ span: 4}} fluid="md">
@@ -95,6 +102,7 @@ class Register extends React.Component {
               </Col>
             </Row>
           </div>
+      </>
    );
   }
 }

@@ -46,7 +46,7 @@ class NavBar extends React.Component{
   )}
   ;
 };
-
+            // <Button variant="danger" type="submit" onClick={props.onLogout}>Sign Out</Button>
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
