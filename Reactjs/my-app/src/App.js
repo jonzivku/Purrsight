@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import { Route, Switch } from "react-router";
 import Login from './Login';
-import PrivateRoute from './components/PrivateRoute'
+//import PrivateRoute from './components/PrivateRoute'
 import Register from './Register';
 import Profile from './Profile';
-import UpdateProfile from './Profile';
+import UpdateProfile from './UpdateProfile.js';
 import Home from './Home';
 import * as actions from './store/actions/auth';
 import { connect } from 'react-redux';

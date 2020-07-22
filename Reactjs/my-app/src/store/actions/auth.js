@@ -1,8 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-
-
 export const authStart = () => {
     return {
         type: actionTypes.AUTH_START
@@ -23,17 +21,16 @@ export const authFail = error => {
     }
 }
 
-export const authLogout = error => {
-    return {
-        type: actionTypes.AUTH_FAIL,
-        error: error
-    }
-}
-
 export const logout = () => {
     localStorage.clear()
     return {
         type: actionTypes.AUTH_LOGOUT
+    };
+}
+
+export const reduxWait = () => {
+    return {
+        type: actionTypes.WAIT_SUCCESS
     };
 }
 
@@ -72,29 +69,28 @@ export const authLogin = (email, password) => {
 
 export const authSignup = (email, password1, password2) => {
     return dispatch => {
-        dispatch(authStart());
+    dispatch(authStart());
         
     console.log(email);
     console.log(password1);
     console.log(password2);
-
         
-        axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
-            email: email,
-            password1: password1,
-            password2: password2
-        })
-        .then(res => {
-            const token = res.data.key;
-            const expirationDate = new Date(new Date().getTime + 3600 * 1000);
-            localStorage.setItem('token', token);
-            localStorage.setItem('expirationDate', expirationDate);
-            dispatch(authSuccess(token));
-            dispatch(checkAuthTimeout(3600));
-        })
-        .catch(error => {
-            dispatch(authFail(error))
-        })
+    axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
+        email: email,
+        password1: password1,
+        password2: password2
+    })
+    .then(res => {
+        const token = res.data.key;
+        const expirationDate = new Date(new Date().getTime + 3600 * 1000);
+        localStorage.setItem('token', token);
+        localStorage.setItem('expirationDate', expirationDate);
+        dispatch(authSuccess(token));
+        dispatch(checkAuthTimeout(3600));
+    })
+    .catch(error => {
+        dispatch(authFail(error))
+    })
     }
 }
 

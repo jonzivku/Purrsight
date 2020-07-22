@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Button, Form, Row, Col, Card } from 'react-bootstrap';
 import axios from 'axios';
 // import ImageUploader from 'react-images-upload';
 
@@ -62,18 +62,21 @@ export default class PostingCard extends React.Component {
     let { description } = this.state;
     return (
       <>
-        <Row className="justify-content-md-center">
-          <Col md={{ span: 4 }}>
-            <Form onSubmit={this.submitHandler}>
-              <Form.Group >
-                <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
-                <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
-
-                <Button type="submit" variant="primary" disabled={this.state.noPhoto} style={{float: "right"}}>
-                  Post
-                </Button>
-              </Form.Group>
-            </Form>
+        <Row >
+          <Col >
+            <Card className="p-3">
+              <Card.Text>
+                <Form onSubmit={this.submitHandler}>
+                  <Form.Group >
+                    <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
+                    <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
+                    <Button type="submit" variant="primary" disabled={this.state.noPhoto} style={{float: "right"}}>
+                      Post
+                    </Button>
+                  </Form.Group>
+                </Form>
+              </Card.Text>
+            </Card>
           </Col>
         </Row>
       </>

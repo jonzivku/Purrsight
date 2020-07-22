@@ -3,29 +3,50 @@ import React from 'react';
 import { Navbar, Nav, Button} from 'react-bootstrap';
 import * as actions from './store/actions/auth';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PropTypes from "prop-types";
 
-const NavBar = (props) => {
-  return (
-    //<nav class ="fixed-top">
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="justify-content-front">
-            <Nav.Link href="/Profile">Profile</Nav.Link>
-          </Nav>
-          <Navbar.Collapse className="justify-content-end">
-          <Nav className="justify-content-end">
-            <Button variant="danger" type="submit" onClick={props.onLogout}>Sign Out</Button>
-            <Nav.Link href="/">Sign Out</Nav.Link>
-          </Nav>
+class NavBar extends React.Component{
+
+  constructor(props) {
+    super(props)
+    this.handleLogout = this.handleLogout.bind(this)
+  }
+
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
+  handleLogout = (e) => {
+    localStorage.clear();
+    this.props.history.push('/');
+  }
+
+  render() {
+    const { match, location, history } = this.props;
+    return (
+      //<nav class ="fixed-top"> fixes navbar to top, but doesn't properly align information below
+        <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="justify-content-front">
+              <Nav.Link href="/Profile">Profile</Nav.Link>
+            </Nav>
+            <Navbar.Collapse className="justify-content-end">
+            <Nav className="justify-content-end">
+              <Button variant="danger" type="submit" onClick={this.handleLogout}>Sign Out</Button>
+            </Nav>
+            </Navbar.Collapse>
           </Navbar.Collapse>
-        </Navbar.Collapse>
-      </Navbar>
-    //</nav>
-  );
+        </Navbar>
+      //</nav>
+  )}
+  ;
 };
-
+            // <Button variant="danger" type="submit" onClick={props.onLogout}>Sign Out</Button>
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
@@ -38,4 +59,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NavBar));

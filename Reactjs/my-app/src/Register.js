@@ -2,7 +2,9 @@
 import React from 'react';
 import {Row, Col, Button, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Navbar } from 'react-bootstrap';
 import * as actions from './store/actions/auth';
+import axios from 'axios';
 
 
 class Register extends React.Component {
@@ -13,6 +15,7 @@ class Register extends React.Component {
       email: '',
       password1: '',
       password2: '',
+      error:'',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,11 +28,21 @@ class Register extends React.Component {
 
     e.preventDefault();
 
-        this.props.onAuth(
-            this.state.email,
-            this.state.password1,
-            this.state.password2
-        );    
+    axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
+      email: this.state.email,
+      password1: this.state.password1,
+      password2: this.state.password2
+    }).then(res => {
+      const token = res.data.key;
+      const expirationDate = new Date(new Date().getTime + 3600 * 1000);
+      localStorage.setItem('token', token);
+      localStorage.setItem('expirationDate', expirationDate);
+      this.props.history.push('/Home');
+    })
+    .catch(error => {
+      console.log(error);
+      this.setState({error: 'User already exists or email password combination is invalid.'});
+    })  
   }
 
   handleEmail = (event) => {
@@ -46,6 +59,12 @@ class Register extends React.Component {
 
   render() {
     return (
+      <>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          </Navbar>
+          <br />
           <div>
             <Row className="justify-content-md-center">
               <Col md={{ span: 4}} fluid="md">
@@ -79,10 +98,11 @@ class Register extends React.Component {
                 <Button variant="primary" type="submit" onClick={this.handleSubmit}>
                   Signup
                 </Button>
-                <div>{this.state.email}</div>{this.state.password1},{this.state.password2}
+                <div>{this.state.error}</div>
               </Col>
             </Row>
           </div>
+      </>
    );
   }
 }
