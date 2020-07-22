@@ -7,11 +7,8 @@ import catTwo from './static/2.jpg'
 import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
-<<<<<<< HEAD
 import {IsUser} from './IsUser.js'
-=======
 import {WelcomeCard} from './WelcomeCard.js'
->>>>>>> origin/demo
 import Profile from './Profile.js'
 import {CardColumns } from 'react-bootstrap';
 
@@ -37,18 +34,12 @@ class Home extends Component{
           <Row className="justify-content-md-center">
             <Col md={{span: 8}}>
               <CardColumns>
-<<<<<<< HEAD
-                <IsUser pfp={catOne} name= "Shane" bio= "I LOVE cats"> </IsUser>
-                <PostingCard />
-                <PictureCard post={this.state.testPost} />
-=======
                 <WelcomeCard pfp={catOne} name= "Shane" bio= "I LOVE cats"> </WelcomeCard>
                 <PostingCard />
                 <PictureCard name="Shane" profilePicture={catOne} picture={catThree} description="Hey look a dang gcat" />
                 <PictureCard name="Shane" profilePicture={catOne} picture={catThree} description="Hey I found the same cat" />
                 <PictureCard name="SNAFU" profilePicture={catTwo} picture={catThree} description="Hey me too" />
                 <PictureCard name="SNAFU" profilePicture={catTwo} picture={catThree} description="Hey it's everywhere" />
->>>>>>> origin/demo
               </CardColumns>
             </Col>
           </Row>
