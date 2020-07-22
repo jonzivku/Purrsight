@@ -1,7 +1,7 @@
 import React from 'react';
 import {ProfileCard} from './ProfileCard.js';
 import {GuestCard} from './GuestCard.js';
-
+// USAGE: <IsUser pfp={catOne} name= "Shane" bio= "I LOVE cats"> </IsUser>
 export function IsUser(props) {
   console.log(props.pageID);
   console.log(props.userID);

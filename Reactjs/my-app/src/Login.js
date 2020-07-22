@@ -58,6 +58,7 @@ class Login extends React.Component{
             <Navbar.Brand href="/Home">P U R R S I G H T</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </Navbar>
+          <br />
           <div>
             <Row className="justify-content-md-center">
               <Col md={{ span: 4 }} fluid="md">

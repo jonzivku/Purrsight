@@ -5,7 +5,7 @@ import Login from './Login';
 //import PrivateRoute from './components/PrivateRoute'
 import Register from './Register';
 import Profile from './Profile';
-import UpdateProfile from './Profile';
+import UpdateProfile from './UpdateProfile.js';
 import Home from './Home';
 import * as actions from './store/actions/auth';
 import { connect } from 'react-redux';
