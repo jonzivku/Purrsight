@@ -4,7 +4,7 @@ import { Navbar, Nav, Button} from 'react-bootstrap';
 import * as actions from './store/actions/auth';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 class NavBar extends React.Component{
 
@@ -13,11 +13,11 @@ class NavBar extends React.Component{
     this.handleLogout = this.handleLogout.bind(this)
   }
 
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
+  // static propTypes = {
+  //   match: PropTypes.object.isRequired,
+  //   location: PropTypes.object.isRequired,
+  //   history: PropTypes.object.isRequired
+  // };
 
   handleLogout = (e) => {
     localStorage.clear();
@@ -25,7 +25,7 @@ class NavBar extends React.Component{
   }
 
   render() {
-    const { match, location, history } = this.props;
+    // const { match, location, history } = this.props;
     return (
       //<nav class ="fixed-top"> fixes navbar to top, but doesn't properly align information below
         <Navbar bg="dark" variant="dark">

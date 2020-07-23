@@ -66,15 +66,11 @@ export default class PostingCard extends React.Component {
           <Col >
             <Card className="p-3">
               <Card.Text>
-                <Form onSubmit={this.submitHandler}>
-                  <Form.Group >
-                    <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
-                    <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
-                    <Button type="submit" variant="primary" disabled={this.state.noPhoto} style={{float: "right"}}>
-                      Post
-                    </Button>
-                  </Form.Group>
-                </Form>
+                <Form.Control type="text" name="description" value={description} onChange={this.descriptionChangeHandler} placeholder="Tell me more" as="textarea" rows="3" />
+                <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
+                <Button type="submit" variant="primary" onClick={this.submitHandler} disabled={this.state.noPhoto} style={{float: "right"}}>
+                  Post
+                </Button>
               </Card.Text>
             </Card>
           </Col>

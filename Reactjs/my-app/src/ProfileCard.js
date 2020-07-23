@@ -2,6 +2,7 @@
 import React from 'react';
 import {Image, Card, Button} from 'react-bootstrap';
 import './App.css';
+// import UpdateProfile from './UpdateProfile.js'
 
 export function ProfileCard(props) {
   return (

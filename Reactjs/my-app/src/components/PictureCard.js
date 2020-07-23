@@ -25,7 +25,7 @@ export default function PictureCard(props) {
           {props.description}
         </Card.Text>
       </Card.Body>
-      <Card.Img  src={props.picture} thumbnail />
+      <Card.Img  src={props.picture} />
     </Card>
   </>
   );

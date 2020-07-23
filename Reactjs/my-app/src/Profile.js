@@ -3,7 +3,6 @@ import axios from 'axios';
 import React from 'react';
 import {Row, Col, CardColumns } from 'react-bootstrap';
 import catOne from './static/catOne.jpg'
-import catTwo from './static/2.jpg'
 import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
@@ -53,7 +52,6 @@ class Profile extends React.Component{
   }
   
   render() {
-    const { posts } = this.state
     return (
       <>
         <NavBar>
