@@ -8,29 +8,50 @@ class UpdateProfile extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      token: localStorage.getItem('token'),
+      picture: '',
       name: '',
-      bio: ''
-    };
+      bio: '',
+      noPhoto: true
+    }
   }
 
-  id = localStorage.getItem( 'id' );
+  fileSelectedHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.files[0],
+      noPhoto: false
+    })
+    console.log(e.target.name)
+  }
 
   changeHandler = e => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.value);
   }
 
-  submitHandler = e => {
-    e.preventDefault()
-    console.log(this.state)
-    axios.post('http://localhost:8000/profile/{$id}',
-        this.state
-      )
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  submitHandler = () => {
+    // need to check for null before we continue
+    const fd = new FormData();
+
+    // TODO: testjunk, fix
+    fd.append('profilepicture',
+      this.state.picture)
+    fd.append('name',
+      this.state.name)
+    fd.append('bio',
+      this.state.bio)
+
+    const config = { headers: {
+      'content-type': 'multipart/form-data',
+      Authorization: this.state.token
+    }}
+
+
+
+    axios.post('http://localhost:8000/profile/', fd, config)
+      .then(res => {
+        console.log(res);
+    })
   }
 
 
@@ -52,7 +73,8 @@ class UpdateProfile extends Component{
                 <Form.Label>Update Bio</Form.Label>
                 <Form.Control type="text" name="bio" value={bio} onChange={this.changeHandler} as="textarea" rows="3" />
               </Form.Group>
-              <Button type="submit" variant="outline-primary">
+               <Form.File.Input onChange={this.fileSelectedHandler} name="picture" />
+              <Button type="submit" variant="outline-primary" disabled={this.state.noPhoto} style={{float: "right"}}>
                 Submit
               </Button>
             </Form>
@@ -62,5 +84,6 @@ class UpdateProfile extends Component{
     )
   }
 }
+
 
 export default UpdateProfile
