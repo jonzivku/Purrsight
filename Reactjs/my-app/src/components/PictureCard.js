@@ -3,7 +3,7 @@ import { Card, Row, Image, Col } from 'react-bootstrap';
 
 export default function PictureCard(props) {
 
-  // const {name, profilePicture, picture, description} = props.post;
+  // const {pfp, name, description, picture} = props.picture;
 
   return (
     <>
@@ -11,21 +11,21 @@ export default function PictureCard(props) {
       <Card.Header>
         <Row>
           <Col md={{span:2}}>
-            <Image style = {{width: 50, height: 50}} src={props.profilePicture} roundedCircle />
+            <Image style = {{width: 50, height: 50}} src={props.picture.pfp} roundedCircle />
           </Col>
           <Col >
             <Card.Title >
-              {props.name}
+              {props.picture.name}
             </Card.Title>
           </Col>
         </Row>
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          {props.description}
+          {props.picture.description}
         </Card.Text>
       </Card.Body>
-      <Card.Img  src={props.picture} />
+      <Card.Img src={props.picture.picture} />
     </Card>
   </>
   );

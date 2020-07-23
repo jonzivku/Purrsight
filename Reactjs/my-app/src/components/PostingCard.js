@@ -45,18 +45,11 @@ export default class PostingCard extends React.Component {
     }}
 
 
-
     axios.post('http://localhost:8000/profile/', fd, config)
       .then(res => {
         console.log(res);
     })
   }
-  //
-  // removeImage = id => {
-  //   this.setState({
-  //     images: this.state.images.filter(image => image.public_id !== id)
-  //   })
-  // }
 
   render() {
     let { description } = this.state;

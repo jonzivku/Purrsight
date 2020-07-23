@@ -3,12 +3,13 @@ import React from 'react';
 import {Image, Card} from 'react-bootstrap';
 
 export function WelcomeCard(props) {
+  console.log(props.profile);
   return (
     <>
       <Card className="text-center">
-        <Image src={props.pfp} roundedCircle/>
+        <Image src={props.profile.php} roundedCircle/>
         <Card.Body>
-          <Card.Title>Welcome! <div/>{props.name}</Card.Title>
+          <Card.Title>Welcome! <div />{props.profile.name}</Card.Title>
         </Card.Body>
       </Card>
     </>

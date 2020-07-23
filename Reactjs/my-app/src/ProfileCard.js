@@ -4,15 +4,16 @@ import {Image, Card, Button} from 'react-bootstrap';
 // import UpdateProfile from './UpdateProfile.js'
 
 export function ProfileCard(props) {
+  console.log(props.profile.pfp);
   return (
     <>
       <Card className="text-center">
-        <Image src={props.pfp} roundedCircle/>
+        <Image src={props.profile.pfp} roundedCircle/>
         <Card.Body>
-          <Card.Title>{props.name}</Card.Title>
+          <Card.Title>{props.profile.name}</Card.Title>
           <Card.Text>
-            {props.bio}
-            {props.location}
+            {props.profile.bio}
+            {props.profile.location}
           </Card.Text>
           <Button variant="primary" href="/UpdateProfile/">Update</Button>
         </Card.Body>

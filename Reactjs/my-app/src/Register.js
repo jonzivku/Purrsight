@@ -22,7 +22,7 @@ class Register extends React.Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handlePassword2 = this.handlePassword2.bind(this);
-  }  
+  }
 
   handleSubmit = (e) => {
 
@@ -42,7 +42,7 @@ class Register extends React.Component {
     .catch(error => {
       console.log(error);
       this.setState({error: 'User already exists or email password combination is invalid.'});
-    })  
+    })
   }
 
   handleEmail = (event) => {
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password1, password2) => dispatch(actions.authSignup(email, password1, password2)) 
+        onAuth: (email, password1, password2) => dispatch(actions.authSignup(email, password1, password2))
     }
 }
 
