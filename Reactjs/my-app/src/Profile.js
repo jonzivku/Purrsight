@@ -21,7 +21,7 @@ class Profile extends React.Component{
       imgsrc: '',
       testPost: {
       name:"Shane",
-      profilePicture: catTwo,
+      profilePicture: catOne,
       picture: catThree,
       description:"Hey look a dang gcat"
       }

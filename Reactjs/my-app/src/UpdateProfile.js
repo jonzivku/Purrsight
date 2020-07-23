@@ -42,10 +42,10 @@ class UpdateProfile extends Component{
 
     const config = { headers: {
       'content-type': 'multipart/form-data',
-      Authorization: this.state.token
+      Authorization: 'token ' + this.state.token
     }}
 
-    axios.patch('http://localhost:8000/profile/', fd, config)
+    axios.put('http://localhost:8000/profile/1/', fd, config)
       .then(res => {
         console.log(res);
     })

@@ -53,16 +53,7 @@ class UserViewSet(viewsets.ViewSet):
     # """
 
     def list(self, request): #localhost:8000/profile/
-        print('wher are we')
-        print(request.user.id)
         user = UserProfile.objects.get(pk=request.user.id)
-        print(user)
-        print('\n')
-        print(user.name)
-        print('\n')
-        print(user.bio)
-        print('\n')
-        print(user)
         serializer = UserProfileSerializer(user)        
         return Response(serializer.data)
 
@@ -75,8 +66,6 @@ class UserViewSet(viewsets.ViewSet):
         return Response()
 
     def update(self, request, pk=None):#localhost:8000/profile/14/
-        print(request.data['profilepicture'])
-        print(request.user.id)
         user_to_update = UserProfile.objects.get(pk=request.user.id)
         user_auth_fields_to_update = User.objects.get(pk=request.user.id)
         user_to_update.authUser = user_auth_fields_to_update
