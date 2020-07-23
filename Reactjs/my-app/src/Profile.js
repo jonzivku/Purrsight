@@ -12,30 +12,7 @@ import {IsUser} from './IsUser.js';
 import NavBar from './NavBar';
 
 class Profile extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      testPost: {
-      name:"Shane",
-      profilePicture: catTwo,
-      picture: catThree,
-      description:"Hey look a dang gcat"
-      }
-    };
-  }
-
-  componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts/1')
-      .then(response => {
-        console.log(response)
-        this.setState({posts: response.data})
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
   render() {
-    const { posts } = this.state
     return (
       <>
         <NavBar>
