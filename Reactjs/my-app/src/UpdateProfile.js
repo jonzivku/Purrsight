@@ -9,7 +9,8 @@ class UpdateProfile extends Component{
     super(props);
     this.state = {
       name: '',
-      bio: ''
+      bio: '',
+      image: '',
     };
   }
 
@@ -22,7 +23,7 @@ class UpdateProfile extends Component{
   submitHandler = e => {
     e.preventDefault()
     console.log(this.state)
-    axios.post('http://localhost:8000/profile/{$id}',
+    axios.patch('http://localhost:8000/profile/{$id}/',
         this.state
       )
       .then(response => {

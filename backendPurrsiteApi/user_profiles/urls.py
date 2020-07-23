@@ -5,10 +5,10 @@ from rest_framework import routers, viewsets
 
 # Create a router and register our viewsets with it.
 
-
-
 # The API URLs are now determined automatically by the router.
+
 router = routers.DefaultRouter()
+
 router.register(r'', UserViewSet)
 
 urlpatterns = router.urls

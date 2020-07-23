@@ -26,4 +26,5 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('posts/', include('posts.urls')),
     path('profile/', include('user_profiles.urls')),
+    #http://localhost:8000/profile/ leads to user_profile directory urls 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

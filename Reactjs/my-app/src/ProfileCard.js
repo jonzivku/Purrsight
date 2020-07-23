@@ -1,13 +1,13 @@
 //ProfileCard.js
 import React from 'react';
 import {Image, Card, Button} from 'react-bootstrap';
-import UpdateProfile from './UpdateProfile.js'
+import './App.css';
 
 export function ProfileCard(props) {
   return (
     <>
       <Card className="text-center">
-        <Image src={props.pfp} roundedCircle/>
+        <Image src={props.imgurl} roundedCircle  raised className="ProfileCard-img"/>
         <Card.Body>
           <Card.Title>{props.name}</Card.Title>
           <Card.Text>
