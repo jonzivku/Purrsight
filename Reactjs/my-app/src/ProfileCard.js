@@ -1,7 +1,7 @@
 //ProfileCard.js
 import React from 'react';
 import {Image, Card, Button} from 'react-bootstrap';
-import UpdateProfile from './UpdateProfile.js'
+// import UpdateProfile from './UpdateProfile.js'
 
 export function ProfileCard(props) {
   return (

@@ -1,14 +1,11 @@
 //Profile.js
-import axios from 'axios';
-import React, {Component} from 'react';
+import React from 'react';
 import {Row, Col, CardColumns } from 'react-bootstrap';
 import catOne from './static/catOne.jpg'
-import catTwo from './static/2.jpg'
 import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
 import {ProfileCard} from './ProfileCard.js'
-import {IsUser} from './IsUser.js';
 import NavBar from './NavBar';
 
 class Profile extends React.Component{

@@ -7,9 +7,7 @@ import catTwo from './static/2.jpg'
 import catThree from './static/3.png'
 import PictureCard from './components/PictureCard.js';
 import PostingCard from './components/PostingCard.js'
-import {IsUser} from './IsUser.js'
 import {WelcomeCard} from './WelcomeCard.js'
-import Profile from './Profile.js'
 import {CardColumns } from 'react-bootstrap';
 
 class Home extends Component{

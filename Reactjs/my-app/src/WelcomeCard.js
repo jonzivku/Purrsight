@@ -1,6 +1,6 @@
 //WelcomeCard.js
 import React from 'react';
-import {Image, Card, Button} from 'react-bootstrap';
+import {Image, Card} from 'react-bootstrap';
 
 export function WelcomeCard(props) {
   return (
